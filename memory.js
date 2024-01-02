@@ -1,4 +1,4 @@
-// Date: 2021-03-01
+// Date: 02.01.2024
     let resetButton;
     let tiles;
     let permutation;
