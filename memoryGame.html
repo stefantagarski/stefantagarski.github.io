@@ -1,16 +1,10 @@
 ---
-layout: page
-title: "Memory Game"
+layout: default
+title: Memory Game
 ---
 
-
-<!DOCTYPE html>
-<html lang="en-us">
-
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      // Date: 2021-03-01
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
         let resetButton;
         let tiles;
         let permutation;
@@ -30,19 +24,6 @@ title: "Memory Game"
             'black_heart.png',
             'lego_head.png'
         ];
-
-        document.addEventListener("DOMContentLoaded", () => {
-            resetButton = document.querySelector('input[type="submit"]');
-            tiles = document.getElementsByTagName('td');
-
-            resetButton.addEventListener('click', () => game());
-
-            for (const tile of tiles) {
-                tile.addEventListener('click', click);
-            }
-
-            game();
-        });
 
         function game() {
             permutation = [...icons, ...icons];
@@ -116,115 +97,118 @@ title: "Memory Game"
             document.getElementById('score').textContent = `Score: ${score}`;
         }
 
-
         function showWinningMessage() {
             alert('Congratulations! You won!');
         }
 
-    </script>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
+        resetButton = document.querySelector('input[type="submit"]');
+        tiles = document.getElementsByTagName('td');
+
+        resetButton.addEventListener('click', () => game());
+
+        for (const tile of tiles) {
+            tile.addEventListener('click', click);
         }
 
-        h1 {
-            text-align: center;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
+        game();
+    });
+</script>
 
-        table {
-    width: 100%;
-    margin: 0 auto;
-    border-collapse: collapse;
-}
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
 
-td {
-    width: 25%; /* Set a percentage width to divide the table into equal columns */
-    height: 150px; /* Set a fixed height for the table cells */
-    border: 1px solid #ddd;
-    padding: 5px;
-    text-align: center;
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-}
+    h1 {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
 
+    table {
+        width: 100%;
+        margin: 0 auto;
+        border-collapse: collapse;
+    }
 
+    td {
+        width: 25%;
+        height: 150px;
+        border: 1px solid #ddd;
+        padding: 5px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        max-width: 125px;
+        max-height: 125px;
+    }
+
+    input[type="submit"] {
+        display: block;
+        margin: 10px auto;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    #score {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    #difficulty {
+        display: block;
+        margin: 10px auto;
+        padding: 5px;
+        font-size: 14px;
+    }
+
+    @media only screen and (max-width: 600px) {
         img {
-            width: 100%;
-            height: auto;
-            max-width: 125px;
-            max-height: 125px;
+            max-width: 75px;
+            max-height: 75px;
         }
+    }
+</style>
 
-        input[type="submit"] {
-            display: block;
-            margin: 10px auto;
-            padding: 10px;
-            font-size: 16px;
-        }
-
-        #score {
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-        #difficulty {
-            display: block;
-            margin: 10px auto;
-            padding: 5px;
-            font-size: 14px;
-        }
-
-        @media only screen and (max-width: 600px) {
-            img {
-                max-width: 75px;
-                max-height: 75px;
-            }
-        }
-    </style>
-    <title>Memory Game</title>
-</head>
-
-<body>
-    <h1>Meморија</h1>
-    <div>
-        <div id="score">Score: 0</div>
-        <select id="difficulty" onchange="changeDifficulty()">
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-        </select>
-        <table>
-            <tr>
-                <td id="t11"><img src="brown_hexagon.png" alt="Brown Hexagon" /></td>
-                <td id="t12"><img src="green_triangle.png" alt="Green Triangle" /></td>
-                <td id="t13"><img src="Pan_Blue_Circle.png" alt="Blue Circle" /></td>
-                <td id="t14"><img src="pink_square.png" alt="Pink Square" /></td>
-            </tr>
-            <tr>
-                <td id="t21"><img src="red_square.png" alt="Red Square" /></td>
-                <td id="t22"><img src="yellow_circle.png" alt="Yellow Circle" /></td>
-                <td id="t23"><img src="black_heart.png" alt="Black Heart" /></td>
-                <td id="t24"><img src="lego_head.png" alt="Lego Head" /></td>
-            </tr>
-            <tr>
-                <td id="t31"><img src="brown_hexagon.png" alt="Brown Hexagon" /></td>
-                <td id="t32"><img src="green_triangle.png" alt="Green Triangle" /></td>
-                <td id="t33"><img src="Pan_Blue_Circle.png" alt="Blue Circle" /></td>
-                <td id="t34"><img src="pink_square.png" alt="Pink Square" /></td>
-            </tr>
-            <tr>
-                <td id="t41"><img src="red_square.png" alt="Red Square" /></td>
-                <td id="t42"><img src="yellow_circle.png" alt="Yellow Circle" /></td>
-                <td id="t43"><img src="black_heart.png" alt="Black Heart" /></td>
-                <td id="t44"><img src="lego_head.png" alt="Lego Head" /></td>
-            </tr>
-        </table>
-        <input type="submit" value="RESET" />
-    </div>
-</body>
-
-</html>
+<div>
+    <div id="score">Score: 0</div>
+    <select id="difficulty" onchange="changeDifficulty()">
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+    </select>
+    <table>
+        <tr>
+            <td id="t11"><img src="brown_hexagon.png" alt="Brown Hexagon" /></td>
+            <td id="t12"><img src="green_triangle.png" alt="Green Triangle" /></td>
+            <td id="t13"><img src="Pan_Blue_Circle.png" alt="Blue Circle" /></td>
+            <td id="t14"><img src="pink_square.png" alt="Pink Square" /></td>
+        </tr>
+        <tr>
+            <td id="t21"><img src="red_square.png" alt="Red Square" /></td>
+            <td id="t22"><img src="yellow_circle.png" alt="Yellow Circle" /></td>
+            <td id="t23"><img src="black_heart.png" alt="Black Heart" /></td>
+            <td id="t24"><img src="lego_head.png" alt="Lego Head" /></td>
+        </tr>
+        <tr>
+            <td id="t31"><img src="brown_hexagon.png" alt="Brown Hexagon" /></td>
+            <td id="t32"><img src="green_triangle.png" alt="Green Triangle" /></td>
+            <td id="t33"><img src="Pan_Blue_Circle.png" alt="Blue Circle" /></td>
+            <td id="t34"><img src="pink_square.png" alt="Pink Square" /></td>
+        </tr>
+        <tr>
+            <td id="t41"><img src="red_square.png" alt="Red Square" /></td>
+            <td id="t42"><img src="yellow_circle.png" alt="Yellow Circle" /></td>
+            <td id="t43"><img src="black_heart.png" alt="Black Heart" /></td>
+            <td id="t44"><img src="lego_head.png" alt="Lego Head" /></td>
+        </tr>
+    </table>
+    <input type="submit" value="RESET" />
+</div>
