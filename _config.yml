@@ -19,7 +19,7 @@ navigation:                # accepts {file, title, url, icon, sidebaricon}
   - {file: "index.html", icon: "home"}
   - {file: "aboutMe.html", title: "About Me"}
   - {file: "education.html", title: "Education"}
-  - {file: "memoryGame.html", title: "Hobbies"}
+  - {file: "hobbies.html", title: "Hobbies"}
   - {file: "memoryGame.html", title: "Memory Game"}
 external:
   - {title: Mail, icon: envelope, url: "mailto:tagarskis@gmail.com"}
