@@ -10,7 +10,118 @@ title: "Memory Game"
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="memory.js"></script>
+      // Date: 2021-03-01
+        let resetButton;
+        let tiles;
+        let permutation;
+        let first;
+        let second;
+        let startTime;
+        let score = 0;
+
+        const ids = ['t11', 't12', 't13', 't14', 't21', 't22', 't23', 't24', 't31', 't32', 't33', 't34', 't41', 't42', 't43', 't44'];
+        const icons = [
+            'brown_hexagon.png',
+            'green_triangle.png',
+            'Pan_Blue_Circle.png',
+            'pink_square.png',
+            'red_square.png',
+            'yellow_circle.png',
+            'black_heart.png',
+            'lego_head.png'
+        ];
+
+        document.addEventListener("DOMContentLoaded", () => {
+            resetButton = document.querySelector('input[type="submit"]');
+            tiles = document.getElementsByTagName('td');
+
+            resetButton.addEventListener('click', () => game());
+
+            for (const tile of tiles) {
+                tile.addEventListener('click', click);
+            }
+
+            game();
+        });
+
+        function game() {
+            permutation = [...icons, ...icons];
+            shuffle();
+
+            for (let i = 0; i < 16; i++) {
+                document.querySelector(`td#${ids[i]} img`).src = 'default.png';
+            }
+
+            startTimer();
+            score = 0;
+            updateScore();
+        }
+
+        function shuffle() {
+            for (let i = permutation.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+
+                let temp = permutation[i];
+                permutation[i] = permutation[j];
+                permutation[j] = temp;
+            }
+        }
+
+        function click(event) {
+            let element;
+
+            if (event.target.nodeName === 'IMG') {
+                element = event.target.parentElement.id;
+            } else {
+                element = event.target.id;
+            }
+
+            if (!document.getElementById(element).children[0].src.match(/.*default\.png/g)) {
+                return;
+            }
+
+            document.getElementById(element).children[0].src = permutation[ids.indexOf(element)];
+
+            if (first !== undefined) {
+                document.getElementById(first).children[0].src = 'default.png';
+            }
+
+            first = second;
+            second = element;
+
+            if (first !== undefined && second !== undefined && document.getElementById(first).children[0].src === document.getElementById(second).children[0].src) {
+                first = undefined;
+                second = undefined;
+                updateScore();
+
+                if (score === icons.length) {
+                    stopTimer();
+                    showWinningMessage();
+                }
+            }
+        }
+
+        function startTimer() {
+            startTime = new Date();
+        }
+
+        function stopTimer() {
+            const endTime = new Date();
+            const elapsedTime = (endTime - startTime) / 1000; // in seconds
+            alert(`Congratulations! You completed the game in ${elapsedTime} seconds.`);
+        }
+
+        function updateScore() {
+            // Update the score display on the page
+            document.getElementById('score').textContent = `Score: ${score}`;
+        }
+
+
+        function showWinningMessage() {
+            alert('Congratulations! You won!');
+        }
+
+    </script>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -69,46 +180,46 @@ title: "Memory Game"
             }
         }
     </style>
-    <title></title>
+    <title>Memory Game</title>
 </head>
 
 <body>
-<h1>Meморија</h1>
-<div>
-    <div id="score">Score: 0</div>
-    <select id="difficulty" onchange="changeDifficulty()">
-        <option value="easy">Easy</option>
-        <option value="medium">Medium</option>
-        <option value="hard">Hard</option>
-    </select>
-    <table>
-        <tr>
-            <td id="t11"><img src="" /></td>
-            <td id="t12"><img src="" /></td>
-            <td id="t13"><img src="" /></td>
-            <td id="t14"><img src="" /></td>
-        </tr>
-        <tr>
-            <td id="t21"><img src="" /></td>
-            <td id="t22"><img src="" /></td>
-            <td id="t23"><img src="" /></td>
-            <td id="t24"><img src="" /></td>
-        </tr>
-        <tr>
-            <td id="t31"><img src="" /></td>
-            <td id="t32"><img src="" /></td>
-            <td id="t33"><img src="" /></td>
-            <td id="t34"><img src="" /></td>
-        </tr>
-        <tr>
-            <td id="t41"><img src="" /></td>
-            <td id="t42"><img src="" /></td>
-            <td id="t43"><img src="" /></td>
-            <td id="t44"><img src="" /></td>
-        </tr>
-    </table>
-    <input type="submit" value="RESET" />
-</div>
+    <h1>Meморија</h1>
+    <div>
+        <div id="score">Score: 0</div>
+        <select id="difficulty" onchange="changeDifficulty()">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+        <table>
+            <tr>
+                <td id="t11"><img src="brown_hexagon.png" alt="Brown Hexagon" /></td>
+                <td id="t12"><img src="green_triangle.png" alt="Green Triangle" /></td>
+                <td id="t13"><img src="Pan_Blue_Circle.png" alt="Blue Circle" /></td>
+                <td id="t14"><img src="pink_square.png" alt="Pink Square" /></td>
+            </tr>
+            <tr>
+                <td id="t21"><img src="red_square.png" alt="Red Square" /></td>
+                <td id="t22"><img src="yellow_circle.png" alt="Yellow Circle" /></td>
+                <td id="t23"><img src="black_heart.png" alt="Black Heart" /></td>
+                <td id="t24"><img src="lego_head.png" alt="Lego Head" /></td>
+            </tr>
+            <tr>
+                <td id="t31"><img src="brown_hexagon.png" alt="Brown Hexagon" /></td>
+                <td id="t32"><img src="green_triangle.png" alt="Green Triangle" /></td>
+                <td id="t33"><img src="Pan_Blue_Circle.png" alt="Blue Circle" /></td>
+                <td id="t34"><img src="pink_square.png" alt="Pink Square" /></td>
+            </tr>
+            <tr>
+                <td id="t41"><img src="red_square.png" alt="Red Square" /></td>
+                <td id="t42"><img src="yellow_circle.png" alt="Yellow Circle" /></td>
+                <td id="t43"><img src="black_heart.png" alt="Black Heart" /></td>
+                <td id="t44"><img src="lego_head.png" alt="Lego Head" /></td>
+            </tr>
+        </table>
+        <input type="submit" value="RESET" />
+    </div>
 </body>
 
 </html>
