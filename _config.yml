@@ -25,7 +25,6 @@ external:
   - {title: Mail, icon: envelope, url: "mailto:tagarskis@gmail.com"}
   - {title: Github, icon: github, url: "https://github.com/stefantagarski"}
   - {title: Facebook, icon: facebook, url: "https://facebook.com/stefan.tagarski"}
-  - {title: LinkedIn, icon: LinkedIn, url: "https://www.linkedin.com/in/stefan-tagarski-942518265/"}
 
 comments:
 #  disqus_shortname: ""    # see https://disqus.com/
