@@ -137,15 +137,20 @@ title: "Memory Game"
         }
 
         table {
-            margin: 0 auto;
-            border-collapse: collapse;
-        }
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
 
-        td {
-            border: 1px solid #ddd;
-            padding: 5px;
-            text-align: center;
-        }
+td {
+    width: 25%; /* Set a percentage width to divide the table into equal columns */
+    height: 150px; /* Set a fixed height for the table cells */
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: center;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
 
         img {
             width: 100%;
