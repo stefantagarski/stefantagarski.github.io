@@ -20,7 +20,7 @@ navigation:                # accepts {file, title, url, icon, sidebaricon}
   - {file: "aboutMe.html", title: "About Me"}
   - {file: "education.html", title: "Education"}
   - {file: "hobbies.html", title: "Hobbies"}
-  - {file: "memoryGame.html", title: "Memory Game"}
+  - {file: "Calculator_basic.html", title: "Calculator"}
 external:
   - {title: Mail, icon: envelope, url: "mailto:tagarskis@gmail.com"}
   - {title: Github, icon: github, url: "https://github.com/stefantagarski"}
