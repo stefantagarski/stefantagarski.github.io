@@ -5,7 +5,8 @@ title: "Calculator"
 
 
 
-<!-- <!DOCTYPE html>
+<!-- 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,8 +14,8 @@ title: "Calculator"
 </head> -->
 
 <style>
-    body{
-        padding: 100px;
+    #container{
+        padding: 90px;
     }
 
     #ramka {
@@ -65,6 +66,7 @@ title: "Calculator"
 </style>
 
 <body>
+<div id="container">
 <div id="ramka">
 <div id="calculator">
     <label for="display"></label><input type="text" id="display" readonly>
@@ -103,6 +105,7 @@ title: "Calculator"
         <button onclick="appendToDisplay('%')">%</button>
         <button class="clear" onclick="clearDisplay()">C</button>
     </div>
+</div>
 </div>
 </div>
 <script>
