@@ -11,8 +11,9 @@ title: "TicTacToe"
     <title>Tic Tac Toe</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body {
+        #ramka {
             font-family: 'Roboto', sans-serif;
+            background-color: #3498db;
             margin: 0;
             padding: 0;
             display: flex;
@@ -49,6 +50,7 @@ title: "TicTacToe"
     </style>
 </head>
 <body>
+<div id="ramka">
 <div class="container">
     <div class="board" id="board">
         <div class="cell" onclick="cellClicked(0)"></div>
@@ -61,6 +63,7 @@ title: "TicTacToe"
         <div class="cell" onclick="cellClicked(7)"></div>
         <div class="cell" onclick="cellClicked(8)"></div>
     </div>
+</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
