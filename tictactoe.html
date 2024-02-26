@@ -69,7 +69,7 @@ title: "TicTacToe"
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 <script>
     let currentPlayer = 'X';
-    let currentColor = '#27ae60'; // Green color for X
+    let currentColor = '#27ae60'; 
     const cells = document.querySelectorAll('.cell');
     let gameActive = true;
 
@@ -99,7 +99,7 @@ title: "TicTacToe"
                 resetGame();
             } else {
                 currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-                currentColor = currentPlayer === 'X' ? '#27ae60' : '#e74c3c'; // Change color based on player
+                currentColor = currentPlayer === 'X' ? '#27ae60' : '#e74c3c'; 
             }
         }
     }
