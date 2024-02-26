@@ -1,16 +1,18 @@
- ---
-layout: page
-title: "TicTacToe"
- ---
+<!-- -&#45;&#45;-->
+<!--layout: page-->
+<!--title: "TicTacToe"-->
+<!-- -&#45;&#45;-->
 
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">-->
+<!--</head>-->
     <style>
-        #ramka {
+        body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
@@ -22,7 +24,7 @@ title: "TicTacToe"
         .container {
             background-color: #fff;
             border-radius: 8px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
         }
         .board {
             display: grid;
@@ -46,9 +48,8 @@ title: "TicTacToe"
             background-color: #c0c0c0;
         }
     </style>
-</head>
+
 <body>
-<div id="ramka">
 <div class="container">
     <div class="board" id="board">
         <div class="cell" onclick="cellClicked(0)"></div>
@@ -62,8 +63,6 @@ title: "TicTacToe"
         <div class="cell" onclick="cellClicked(8)"></div>
     </div>
 </div>
-</div>
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 <script>
@@ -137,4 +136,4 @@ title: "TicTacToe"
     }
 </script>
 </body>
-</html>
+<!--</html>-->
