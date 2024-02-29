@@ -19,8 +19,8 @@ navigation:                # accepts {file, title, url, icon, sidebaricon}
   - {file: "index.html", icon: "home"}
   - {file: "aboutMe.html", title: "About Me"}
   - {file: "education.html", title: "Education"}
-  - {file: "Calculator_basic.html", title: "Calculator"}
-  - {file: "tictactoe.html", title: "TicTacToe"}
+  # - {file: "Calculator_basic.html", title: "Calculator"}
+  # - {file: "tictactoe.html", title: "TicTacToe"}
 external:
   - {title: Mail, icon: envelope, url: "mailto:tagarskis@gmail.com"}
   - {title: Github, icon: github, url: "https://github.com/stefantagarski"}
