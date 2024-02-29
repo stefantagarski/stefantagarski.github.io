@@ -1,2 +1,2 @@
-**TicTacToe game Documentaion**
+**TicTacToe game Documentation**
 --------------------------------
