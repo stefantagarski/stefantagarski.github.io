@@ -1,1 +1,1 @@
-[Documentation for TicTacToe game] (Documentation.md)
+[Documentation for TicTacToe game](Documentation.md)
