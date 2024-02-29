@@ -8,4 +8,5 @@ I'm excited to share that this is the very first website I've built. Constructin
 
 _Here you will find the documentation for all the projects that I will be building and posting in this repository and on the site._
 
-- [Documentation for TicTacToe game](Documentation.md)
+- [Documentation for TicTacToe game](TicTacToe.md)
+- [Documentation for Calculator]()
