@@ -1,2 +1,2 @@
-**Calucaltor Documentaion**
+**Calculator Documentation**
 --------------------------------
