@@ -1,8 +1,3 @@
----
-layout: default
-title: "TicTacToe"
----
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,66 +8,145 @@ title: "TicTacToe"
     <style>
         #ramka {
             font-family: 'Roboto', sans-serif;
-            background-color: #577F87;
+            background-color: #577f87;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            width: 100%;
         }
+
         .container {
             background-color: #fff;
             border-radius: 8px;
-            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            width: 720px;
+            height: 507px;
         }
+
         .board {
             display: grid;
-            grid-template-columns: repeat(3, 100px);
-            grid-template-rows: repeat(3, 100px);
+            grid-template-columns: repeat(3, 130px);
+            grid-template-rows: repeat(3, 130px);
             gap: 2px;
             border: 2px solid #ccc;
             border-radius: 8px;
             overflow: hidden;
+            margin-top: 55px;
+            margin-left: 20px;
         }
+
         .cell {
             display: flex;
             justify-content: center;
             align-items: center;
             background-color: #e0e0e0;
-            font-size: 2em;
+            font-size: 2.5em;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
+
         .cell:hover {
             background-color: #c0c0c0;
         }
+
+        .sidebar {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-right: 30px;
+        }
+
+        .sidebar h2 {
+            margin-top: 0;
+            margin-left: 29px;
+        }
+
+        .sidebar button {
+            display: block;
+            margin-bottom: 15px;
+            padding: 12px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar button:hover {
+            background-color: #ddd;
+        }
+
+        #picture1 {
+            width: 60px;
+            height: 60px;
+            float: right;
+        }
+
+        #player1 {
+            float: left;
+            width: 89px;
+            margin-top: 20px;
+            margin-right: 15px;
+        }
+
+        #picture2 {
+            width: 60px;
+            height: 60px;
+            float: right;
+        }
+
+        #player2 {
+            float: left;
+            width: 89px;
+            margin-top: 20px;
+            margin-right: 15px;
+        }
+
     </style>
+
 </head>
 <body>
 <div id="ramka">
-<div class="container">
-    <div class="board" id="board">
-        <div class="cell" onclick="cellClicked(0)"></div>
-        <div class="cell" onclick="cellClicked(1)"></div>
-        <div class="cell" onclick="cellClicked(2)"></div>
-        <div class="cell" onclick="cellClicked(3)"></div>
-        <div class="cell" onclick="cellClicked(4)"></div>
-        <div class="cell" onclick="cellClicked(5)"></div>
-        <div class="cell" onclick="cellClicked(6)"></div>
-        <div class="cell" onclick="cellClicked(7)"></div>
-        <div class="cell" onclick="cellClicked(8)"></div>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Game Mode</h2>
+            <button onclick="startGame('vsComputer')"><span id="player1"> 1 Player </span> <img id="picture1"
+                                                                                                src="player.png" alt="">
+            </button>
+            <button onclick="startGame('1v1')"><span id="player2"> 2 Players </span> <img id="picture2"
+                                                                                          src="player-versus-player.png"
+                                                                                          alt=""></button>
+        </div>
+        <div>
+            <div class="board" id="board">
+                <div class="cell" onclick="cellClicked(0)"></div>
+                <div class="cell" onclick="cellClicked(1)"></div>
+                <div class="cell" onclick="cellClicked(2)"></div>
+                <div class="cell" onclick="cellClicked(3)"></div>
+                <div class="cell" onclick="cellClicked(4)"></div>
+                <div class="cell" onclick="cellClicked(5)"></div>
+                <div class="cell" onclick="cellClicked(6)"></div>
+                <div class="cell" onclick="cellClicked(7)"></div>
+                <div class="cell" onclick="cellClicked(8)"></div>
+            </div>
+        </div>
     </div>
-</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 <script>
+    console.log("For the documentation visit:" + `https://github.com/stefantagarski/stefantagarski.github.io/blob/master/Documentation.md`);
     let currentPlayer = 'X';
-    let currentColor = '#27ae60'; 
+    let currentColor = '#27ae60'; // Green color for X
     const cells = document.querySelectorAll('.cell');
-    let gameActive = true;
+    let gameActive = false;
+    let mode = '';
 
+    //win conditions for the game
     const winConditions = [
         [0, 1, 2],
         [3, 4, 5],
@@ -83,6 +157,7 @@ title: "TicTacToe"
         [0, 4, 8],
         [2, 4, 6]
     ];
+
 
     function cellClicked(index) {
         const cell = cells[index];
@@ -98,8 +173,12 @@ title: "TicTacToe"
                 alert("It's a draw!");
                 resetGame();
             } else {
-                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-                currentColor = currentPlayer === 'X' ? '#27ae60' : '#e74c3c'; 
+                if (mode === 'vsComputer' && currentPlayer === 'X') {
+                    computerMove();
+                } else {
+                    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                    currentColor = currentPlayer === 'X' ? '#27ae60' : '#e74c3c'; // Change color based on player
+                }
             }
         }
     }
@@ -115,9 +194,9 @@ title: "TicTacToe"
 
     function checkWin() {
         return winConditions.some(combination => {
-            return combination.every(index => {
-                return cells[index].textContent === currentPlayer;
-            });
+            const [a, b, c] = combination;
+            return !!(cells[a].textContent && cells[a].textContent === cells[b].textContent && cells[a].textContent === cells[c].textContent);
+
         });
     }
 
@@ -134,8 +213,160 @@ title: "TicTacToe"
         });
         currentPlayer = 'X';
         currentColor = '#27ae60';
+        gameActive = false;
+        mode = '';
+    }
+
+    function startGame(selectedMode) {
+        resetGame();
+        mode = selectedMode;
         gameActive = true;
+        if (mode === 'vsComputer') {
+            currentPlayer = 'X';
+        }
+    }
+
+    function getBoardState() {
+        return Array.from(cells).map(cell => cell.textContent.trim() || null);
+    }
+
+
+    function evaluate(board) {
+        // Define win conditions
+        // Iterate over win conditions and check if any are met
+        // Assign a score based on the outcome
+        // Return the score
+        const winConditions = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+            [0, 4, 8], [2, 4, 6] // Diagonals
+        ];
+
+        for (const condition of winConditions) {
+            const [a, b, c] = condition;
+            if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+                if (board[a] === 'O') {
+                    return 10; // Bot wins
+                } else if (board[a] === 'X') {
+                    return -10; // User wins
+                }
+            }
+        }
+
+        return 0; // Draw or no immediate win
+    }
+
+    function minimax(board, depth, maxPlayer) {
+        if (checkWin(board) || checkDraw(board) || depth === 0) {
+            return evaluate(board);
+        }
+
+        if (maxPlayer) {
+            let maxEval = -Infinity;
+            let bestMoveIndex = -1;
+
+            for (let i = 0; i < board.length; i++) {
+                if (board[i] === '') {
+                    board[i] = 'O'; // assume the bot plays O
+                    const eval = minimax(board, depth - 1, false);
+                    board[i] = ''; // undo the move
+
+                    if (eval > maxEval) {
+                        maxEval = eval;
+                        bestMoveIndex = i;
+                    }
+                }
+            }
+            return depth === 3 ? {score: maxEval, index: bestMoveIndex} : maxEval;
+        } else {
+            let minEval = Infinity;
+
+            for (let i = 0; i < board.length; i++) {
+                if (board[i] === '') {
+                    board[i] = 'X'; // assume the user is X
+                    const eval = minimax(board, depth - 1, true);
+                    board[i] = ''; // undo the move
+
+                    minEval = Math.min(minEval, eval);
+                }
+            }
+            return minEval;
+        }
+    }
+
+    function computerMove() {
+        // Disable player input while computer is making a move
+        // Calculate the best move using the minimax algorithm
+        // Apply the move to the board after a delay for a more natural feel
+        gameActive = false;
+
+        const bestMove = getBestMove();
+        const selectedCell = cells[bestMove.index];
+
+        setTimeout(() => {
+            selectedCell.textContent = 'O';
+            selectedCell.style.color = '#e74c3c';
+            animateCell(selectedCell);
+
+            if (checkWin()) {
+                alert("Computer wins!");
+                resetGame();
+            } else if (checkDraw()) {
+                alert("It's a draw!");
+                resetGame();
+            } else {
+                currentPlayer = 'X';
+                currentColor = '#27ae60';
+                gameActive = true;
+            }
+        }, 1000)
+    }
+
+    function getBestMove() {
+        // Determine the best move by evaluating potential moves and their outcomes
+        let bestScore = -Infinity;
+        let bestMove;
+
+
+        for (let i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+                cells[i].textContent = 'O';
+                const score = evaluate(getBoardState());
+                cells[i].textContent = '';
+                if (score === 10) {
+                    return {index: i};
+                }
+            }
+        }
+
+        // Next, block opponent's winning moves
+        for (let i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+                cells[i].textContent = 'X';
+                const score = evaluate(getBoardState());
+                cells[i].textContent = '';
+                if (score === -10) {
+                    return {index: i};
+                }
+            }
+        }
+
+        // If no immediate win or blocking move, choose the best available move
+        for (let i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+                cells[i].textContent = 'O';
+                const score = minimax(getBoardState(), 3, false);
+                cells[i].textContent = '';
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestMove = i;
+                }
+            }
+        }
+
+        return {index: bestMove};
     }
 </script>
+
 </body>
 </html>
