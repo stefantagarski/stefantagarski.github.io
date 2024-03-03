@@ -111,7 +111,7 @@ title: "TicTacToe"
             margin-right: 16px;
         }
 
-        
+
         @media screen and (max-width: 768px) {
             .container {
                 flex-direction: column;
@@ -129,6 +129,10 @@ title: "TicTacToe"
             .cell {
                 font-size: 2em;
             }
+            #ramka {
+                height: auto;
+                width: auto;
+            }
         }
 
     </style>
@@ -139,7 +143,7 @@ title: "TicTacToe"
     <div class="container">
         <div class="sidebar">
             <h2 style="color: black">Game Mode</h2>
-            <button onclick="startGame('vsComputer')"><span id="player1"> 1 Player </span> <img id="picture1" src="player.png" alt="">
+            <button onclick="startGame('vsComputer')"><span id="player1"> 1 Player </span> <img id="picture1" src="https://github.com/stefantagarski/stefantagarski.github.io/blob/master/images/player.png?raw=true" alt="">
             </button>
             <button onclick="startGame('1v1')"><span id="player2"> 2 Players </span> <img id="picture2" src="https://github.com/stefantagarski/stefantagarski.github.io/blob/master/images/player-versus-player.png?raw=true
 " alt=""></button>
@@ -393,4 +397,5 @@ title: "TicTacToe"
 
 </body>
 </html>
+
 
