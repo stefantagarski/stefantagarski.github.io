@@ -8,7 +8,6 @@ title: "TicTacToe"
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         #ramka {
@@ -118,13 +117,9 @@ title: "TicTacToe"
 <div id="ramka">
     <div class="container">
         <div class="sidebar">
-            <h2>Game Mode</h2>
-            <button onclick="startGame('vsComputer')"><span id="player1"> 1 Player </span> <img id="picture1"
-                                                                                                src="player.png" alt="">
-            </button>
-            <button onclick="startGame('1v1')"><span id="player2"> 2 Players </span> <img id="picture2"
-                                                                                          src="player-versus-player.png"
-                                                                                          alt=""></button>
+            <h2 style="color: black">Game Mode</h2>
+            <button onclick="startGame('vsComputer')"><span id="player1"> 1 Player </span> <img id="picture1"src="player.png" alt="1Player"></button>
+            <button onclick="startGame('1v1')"><span id="player2"> 2 Players </span> <img id="picture2" src="player-versus-player.png" alt="2Players"></button>
         </div>
         <div>
             <div class="board" id="board">
