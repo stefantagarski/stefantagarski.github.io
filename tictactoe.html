@@ -8,6 +8,7 @@ title: "TicTacToe"
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         #ramka {
@@ -107,7 +108,27 @@ title: "TicTacToe"
             float: left;
             width: 89px;
             margin-top: 20px;
-            margin-right: 15px;
+            margin-right: 16px;
+        }
+
+        
+        @media screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                width: 90%;
+                max-width: 500px;
+            }
+            .sidebar {
+                margin-right: 0;
+                margin-bottom: 20px;
+                width: 100%;
+            }
+            .board {
+                margin: 0 auto;
+            }
+            .cell {
+                font-size: 2em;
+            }
         }
 
     </style>
@@ -118,8 +139,10 @@ title: "TicTacToe"
     <div class="container">
         <div class="sidebar">
             <h2 style="color: black">Game Mode</h2>
-            <button onclick="startGame('vsComputer')"><span id="player1"> 1 Player </span> <img id="picture1" src="https://github.com/stefantagarski/stefantagarski.github.io/blob/master/images/player.png?raw=true" alt="1Player"></button>
-            <button onclick="startGame('1v1')"><span id="player2"> 2 Players </span> <img id="picture2" src="https://github.com/stefantagarski/stefantagarski.github.io/blob/master/images/player-versus-player.png?raw=true" alt="2Players"></button>
+            <button onclick="startGame('vsComputer')"><span id="player1"> 1 Player </span> <img id="picture1" src="player.png" alt="">
+            </button>
+            <button onclick="startGame('1v1')"><span id="player2"> 2 Players </span> <img id="picture2" src="https://github.com/stefantagarski/stefantagarski.github.io/blob/master/images/player-versus-player.png?raw=true
+" alt=""></button>
         </div>
         <div>
             <div class="board" id="board">
@@ -139,7 +162,7 @@ title: "TicTacToe"
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 <script>
-    console.log("For the documentation visit:" + `https://github.com/stefantagarski/stefantagarski.github.io/blob/master/TicTacToe.md`);
+    console.log("For the documentation visit:" + `https://github.com/stefantagarski/stefantagarski.github.io/blob/master/Documentation.md`);
     let currentPlayer = 'X';
     let currentColor = '#27ae60'; // Green color for X
     const cells = document.querySelectorAll('.cell');
@@ -370,3 +393,4 @@ title: "TicTacToe"
 
 </body>
 </html>
+
