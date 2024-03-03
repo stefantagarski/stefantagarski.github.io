@@ -1,2 +1,4 @@
 **TicTacToe game Documentation**
 --------------------------------
+
+In this small Project, I've built a Tic Tac Toe game with support for two game modes: 1 player against the computer (AI) and 2 players. The code utilizes HTML elements styled with CSS to create the game board and interface. The core game logic is implemented using JavaScript functions, including handling cell clicks, checking for win/draw conditions, resetting the game, and enabling the computer player to make moves using the minimax algorithm. The minimax algorithm is a recursive search algorithm used in decision-making and game theory to find the optimal move for the computer player in a game with perfect information, such as Tic Tac Toe. The code is well-commented to explain each function's purpose and logic. Additionally, it uses the anime.js library for smooth animations.
