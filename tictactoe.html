@@ -139,7 +139,7 @@ title: "TicTacToe"
 <script>
     console.log("For the documentation visit:" + `https://github.com/stefantagarski/stefantagarski.github.io/blob/master/Documentation.md`);
     let currentPlayer = 'X';
-    let currentColor = '#27ae60'; // Green color for X
+    let currentColor = '#27ae60'; 
     const cells = document.querySelectorAll('.cell');
     let gameActive = false;
     let mode = '';
@@ -230,10 +230,6 @@ title: "TicTacToe"
 
 
     function evaluate(board) {
-        // Define win conditions
-        // Iterate over win conditions and check if any are met
-        // Assign a score based on the outcome
-        // Return the score
         const winConditions = [
             [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
             [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
@@ -293,9 +289,6 @@ title: "TicTacToe"
     }
 
     function computerMove() {
-        // Disable player input while computer is making a move
-        // Calculate the best move using the minimax algorithm
-        // Apply the move to the board after a delay for a more natural feel
         gameActive = false;
 
         const bestMove = getBestMove();
@@ -321,7 +314,7 @@ title: "TicTacToe"
     }
 
     function getBestMove() {
-        // Determine the best move by evaluating potential moves and their outcomes
+        
         let bestScore = -Infinity;
         let bestMove;
 
@@ -337,7 +330,7 @@ title: "TicTacToe"
             }
         }
 
-        // Next, block opponent's winning moves
+    
         for (let i = 0; i < cells.length; i++) {
             if (cells[i].textContent === '') {
                 cells[i].textContent = 'X';
@@ -349,7 +342,7 @@ title: "TicTacToe"
             }
         }
 
-        // If no immediate win or blocking move, choose the best available move
+        
         for (let i = 0; i < cells.length; i++) {
             if (cells[i].textContent === '') {
                 cells[i].textContent = 'O';
