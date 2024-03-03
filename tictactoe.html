@@ -11,37 +11,41 @@ title: "TicTacToe"
     <title>Tic Tac Toe</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        #ramka {
-            font-family: 'Roboto', sans-serif;
-            background-color: #577f87;
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
             margin: 0;
-            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #ramka {
+            background-color: #577f87;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            width: 100%;
+            min-height: 100vh;
         }
 
         .container {
+            display: flex;
+            flex-direction: column;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            display: flex;
-            width: 720px;
-            height: 507px;
+            max-width: 720px;
+            width: 100%;
+            overflow: hidden;
         }
 
         .board {
             display: grid;
-            grid-template-columns: repeat(3, 130px);
-            grid-template-rows: repeat(3, 130px);
+            grid-template-columns: repeat(3, 1fr);
             gap: 2px;
             border: 2px solid #ccc;
             border-radius: 8px;
-            overflow: hidden;
-            margin-top: 55px;
-            margin-left: 20px;
+            margin-top: 20px;
         }
 
         .cell {
@@ -62,12 +66,11 @@ title: "TicTacToe"
             background-color: #f0f0f0;
             padding: 20px;
             border-radius: 8px;
-            margin-right: 30px;
+            margin: 20px;
         }
 
         .sidebar h2 {
-            margin-top: 0;
-            margin-left: 29px;
+            margin: 0 0 10px;
         }
 
         .sidebar button {
@@ -85,98 +88,25 @@ title: "TicTacToe"
             background-color: #ddd;
         }
 
-        #picture1 {
+        #picture1, #picture2 {
             width: 60px;
             height: 60px;
             float: right;
         }
 
-        #player1 {
+        #player1, #player2 {
             float: left;
             width: 89px;
             margin-top: 20px;
             margin-right: 15px;
         }
 
-        #picture2 {
-            width: 60px;
-            height: 60px;
-            float: right;
-        }
-
-        #player2 {
-            float: left;
-            width: 89px;
-            margin-top: 20px;
-            margin-right: 16px;
-        }
-
-
         @media screen and (max-width: 768px) {
-               .container {
-                width: 100%;
-                height: 100%;
-                flex-direction: column;
+            .sidebar, .board {
+                margin: 20px;
             }
+        }
 
-            .board {
-                margin-top: 20px;
-                margin-left: 0;
-            }
-
-            .sidebar {
-                margin: 0;
-                margin-top: 20px;
-                padding: 20px;
-                border-radius: 8px;
-            }
-            
-            .sidebar h2 {
-                margin-top: 0;
-                margin-left: 0;
-            }
-            
-            .sidebar button {
-                display: block;
-                margin-bottom: 15px;
-                padding: 12px;
-                font-size: 1.2em;
-                border: none;
-                border-radius: 6px;
-                cursor: pointer;
-                transition: background-color 0.3s ease;
-            }
-            
-            .sidebar button:hover {
-                background-color: #ddd;
-            }
-            
-            #picture1 {
-                width: 60px;
-                height: 60px;
-                float: right;
-            }
-            
-            #player1 {
-                float: left;
-                width: 89px;
-                margin-top: 20px;
-                margin-right: 15px;
-            }
-            
-            #picture2 {
-                width: 60px;
-                height: 60px;
-                float: right;
-            }
-            
-            #player2 {
-                float: left;
-                width: 89px;
-                margin-top: 20px;
-                margin-right: 16px;
-            }
-            
     </style>
 
 </head>
@@ -184,11 +114,10 @@ title: "TicTacToe"
 <div id="ramka">
     <div class="container">
         <div class="sidebar">
-            <h2 style="color: black">Game Mode</h2>
-            <button onclick="startGame('vsComputer')"><span id="player1"> 1 Player </span> <img id="picture1" src="https://github.com/stefantagarski/stefantagarski.github.io/blob/master/images/player.png?raw=true" alt="">
+            <h2>Game Mode</h2>
+            <button onclick="startGame('vsComputer')"><span id="player1">1 Player</span> <img id="picture1" src="https://github.com/stefantagarski/stefantagarski.github.io/blob/master/images/player.png?raw=true" alt="">
             </button>
-            <button onclick="startGame('1v1')"><span id="player2"> 2 Players </span> <img id="picture2" src="https://github.com/stefantagarski/stefantagarski.github.io/blob/master/images/player-versus-player.png?raw=true
-" alt=""></button>
+            <button onclick="startGame('1v1')"><span id="player2">2 Players</span> <img id="picture2" src="https://github.com/stefantagarski/stefantagarski.github.io/blob/master/images/player-versus-player.png?raw=true" alt=""></button>
         </div>
         <div>
             <div class="board" id="board">
@@ -439,5 +368,4 @@ title: "TicTacToe"
 
 </body>
 </html>
-
 
