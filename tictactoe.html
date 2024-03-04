@@ -11,41 +11,54 @@ title: "TicTacToe"
     <title>Tic Tac Toe</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
+        .container {
+            position: absolute;
         }
-        
-        body {
-            margin: 0;
-            font-family: 'Roboto', sans-serif;
+
+        .board {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .topside {
+            margin: 20px;
+            position: absolute;
+            top: -95px;
+            left: 0;
         }
 
         #ramka {
-            background-color: #577f87;
+            font-family: 'Roboto', sans-serif;
+            background-color: #1e1f24;
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
+            width: 100%;
         }
 
         .container {
-            display: flex;
-            flex-direction: column;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            max-width: 720px;
-            width: 100%;
-            overflow: hidden;
+            display: flex;
+            width: 436px;
+            height: 634px;
         }
 
         .board {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3, 130px);
+            grid-template-rows: repeat(3, 130px);
             gap: 2px;
             border: 2px solid #ccc;
             border-radius: 8px;
-            margin-top: 20px;
+            overflow: hidden;
+            margin-left: 20px;
+            margin-top: 205px;
         }
 
         .cell {
@@ -62,18 +75,16 @@ title: "TicTacToe"
             background-color: #c0c0c0;
         }
 
-        .sidebar {
+        .topside {
             background-color: #f0f0f0;
             padding: 20px;
             border-radius: 8px;
-            margin: 20px;
+            display: inline-flex;
+            margin-top: 107px;
         }
 
-        .sidebar h2 {
-            margin: 0 0 10px;
-        }
 
-        .sidebar button {
+        .topside button {
             display: block;
             margin-bottom: 15px;
             padding: 12px;
@@ -84,28 +95,47 @@ title: "TicTacToe"
             transition: background-color 0.3s ease;
         }
 
-        .sidebar button:hover {
+        .topside button:hover {
             background-color: #ddd;
         }
 
-        #picture1, #picture2 {
+        #picture1 {
             width: 60px;
             height: 60px;
-            float: right;
+
         }
 
-        #player1, #player2 {
-            float: left;
-            width: 89px;
-            margin-top: 20px;
-            margin-right: 15px;
+        #picture2 {
+            width: 60px;
+            height: 60px;
         }
 
-        @media screen and (max-width: 768px) {
-            .sidebar, .board {
-                margin: 20px;
+
+        @media screen and (max-width: 500px) {
+            .board {
+                display: grid;
+                gap: 2px;
+                border: 2px solid #ccc;
+                border-radius: 8px;
+                overflow: hidden;
+                margin-left: 20px;
+                margin-top: 205px;
+
             }
+
+            .topside button {
+                display: block;
+                margin-bottom: 15px;
+                padding: 12px;
+                font-size: 1.1em;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
         }
+
 
     </style>
 
@@ -113,33 +143,36 @@ title: "TicTacToe"
 <body>
 <div id="ramka">
     <div class="container">
-        <div class="sidebar">
-            <h2>Game Mode</h2>
-            <button onclick="startGame('vsComputer')"><span id="player1">1 Player</span> <img id="picture1" src="https://github.com/stefantagarski/stefantagarski.github.io/blob/master/images/player.png?raw=true" alt="">
+        <div class="topside">
+            <h2 style="color: black">Game Mode</h2>
+            <button onclick="startGame('vsComputer')"><span id="player1"> 1 Player </span> <img id="picture1"
+                                                                                                src="https://github.com/stefantagarski/stefantagarski.github.io/blob/master/images/player.png?raw=true"
+                                                                                                alt="">
             </button>
-            <button onclick="startGame('1v1')"><span id="player2">2 Players</span> <img id="picture2" src="https://github.com/stefantagarski/stefantagarski.github.io/blob/master/images/player-versus-player.png?raw=true" alt=""></button>
+            <button onclick="startGame('1v1')"><span id="player2"> 2 Players </span> <img id="picture2"
+                                                                                          src="https://github.com/stefantagarski/stefantagarski.github.io/blob/master/images/player-versus-player.png?raw=true"
+                                                                                          alt=""></button>
         </div>
-        <div>
-            <div class="board" id="board">
-                <div class="cell" onclick="cellClicked(0)"></div>
-                <div class="cell" onclick="cellClicked(1)"></div>
-                <div class="cell" onclick="cellClicked(2)"></div>
-                <div class="cell" onclick="cellClicked(3)"></div>
-                <div class="cell" onclick="cellClicked(4)"></div>
-                <div class="cell" onclick="cellClicked(5)"></div>
-                <div class="cell" onclick="cellClicked(6)"></div>
-                <div class="cell" onclick="cellClicked(7)"></div>
-                <div class="cell" onclick="cellClicked(8)"></div>
-            </div>
+        <div class="board" id="board">
+            <div class="cell" onclick="cellClicked(0)"></div>
+            <div class="cell" onclick="cellClicked(1)"></div>
+            <div class="cell" onclick="cellClicked(2)"></div>
+            <div class="cell" onclick="cellClicked(3)"></div>
+            <div class="cell" onclick="cellClicked(4)"></div>
+            <div class="cell" onclick="cellClicked(5)"></div>
+            <div class="cell" onclick="cellClicked(6)"></div>
+            <div class="cell" onclick="cellClicked(7)"></div>
+            <div class="cell" onclick="cellClicked(8)"></div>
         </div>
     </div>
 </div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 <script>
     console.log("For the documentation visit:" + `https://github.com/stefantagarski/stefantagarski.github.io/blob/master/Documentation.md`);
     let currentPlayer = 'X';
-    let currentColor = '#27ae60'; 
+    let currentColor = '#27ae60'; // Green color for X
     const cells = document.querySelectorAll('.cell');
     let gameActive = false;
     let mode = '';
@@ -230,6 +263,10 @@ title: "TicTacToe"
 
 
     function evaluate(board) {
+        // Define win conditions
+        // Iterate over win conditions and check if any are met
+        // Assign a score based on the outcome
+        // Return the score
         const winConditions = [
             [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
             [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
@@ -289,6 +326,9 @@ title: "TicTacToe"
     }
 
     function computerMove() {
+        // Disable player input while computer is making a move
+        // Calculate the best move using the minimax algorithm
+        // Apply the move to the board after a delay for a more natural feel
         gameActive = false;
 
         const bestMove = getBestMove();
@@ -314,7 +354,7 @@ title: "TicTacToe"
     }
 
     function getBestMove() {
-        
+        // Determine the best move by evaluating potential moves and their outcomes
         let bestScore = -Infinity;
         let bestMove;
 
@@ -330,7 +370,7 @@ title: "TicTacToe"
             }
         }
 
-    
+        // Next, block opponent's winning moves
         for (let i = 0; i < cells.length; i++) {
             if (cells[i].textContent === '') {
                 cells[i].textContent = 'X';
@@ -342,7 +382,7 @@ title: "TicTacToe"
             }
         }
 
-        
+        // If no immediate win or blocking move, choose the best available move
         for (let i = 0; i < cells.length; i++) {
             if (cells[i].textContent === '') {
                 cells[i].textContent = 'O';
@@ -361,4 +401,3 @@ title: "TicTacToe"
 
 </body>
 </html>
-
